@@ -47,6 +47,10 @@ eggList:Add("Dragon Egg")
 eggList:Add("Ocean Egg")
 eggList:Add("Galaxy Egg")
 
+T1:AddTextBox("select number (farm win only)", function(text)
+_G.SyncCastNumber = text or 1
+end)
+
 T1:AddSwitch("Auto power", function(bool)
 _G.Power = bool
 
@@ -61,7 +65,7 @@ _G.Win = bool
 
 while wait() do
 if _G.Win == false then break end
-game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(20)
+game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(_G.SyncCastNumber)
 end
 end)
 
